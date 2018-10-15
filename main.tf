@@ -9,6 +9,7 @@ module "default_label" {
 }
 
 resource "aws_s3_bucket" "default" {
+  count         = "${var.create_s3_bucket ? 1 : 0}"
   bucket        = "${module.default_label.id}"
   acl           = "${var.acl}"
   region        = "${var.region}"
