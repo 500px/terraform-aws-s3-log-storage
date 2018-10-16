@@ -1,15 +1,15 @@
 output "bucket_domain_name" {
-  value       = "${aws_s3_bucket.default.bucket_domain_name}"
+  value       = "${element(concat(aws_s3_bucket.default.*.bucket_domain_name, list("")), 0)}"
   description = "FQDN of bucket"
 }
 
 output "bucket_id" {
-  value       = "${aws_s3_bucket.default.id}"
+  value       = "${element(concat(aws_s3_bucket.default.*.id, list("")), 0)}"
   description = "Bucket Name (aka ID)"
 }
 
 output "bucket_arn" {
-  value       = "${aws_s3_bucket.default.arn}"
+  value       = "${element(concat(aws_s3_bucket.default.*.arn, list("")), 0)}"
   description = "Bucket ARN"
 }
 
